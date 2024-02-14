@@ -2,7 +2,7 @@
 #include <iostream>
 
 int main() {
-   std::cout << "Hello, world!" << std::endl;
+   std::cout << "Armando deja la el lol por favor busca ayuda maldita puta" << std::endl;
 
     return 0;
 }
