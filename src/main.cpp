@@ -8,5 +8,7 @@ int main() {
 
     std::cout << "Gay el que lo lea" << std::endl;
 
+    //te crees chistosito hijo de tu puta madre
+
     return 0;
 }
