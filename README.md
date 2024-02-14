@@ -1,6 +1,20 @@
-# Mi Proyecto C++
+# Proyecto de C++ con CMake y VSCode 🌌
 
 Este es un proyecto de ejemplo en C++ que utiliza CMake y VSCode.
+
+
+## Nombre de clases, funciones y dicheros
+1. Las clases tiene que empezar con mayuscula y las funciones con minuscula.
+
+2. Los nombres de los archivos tienen que ser en minuscula y separados por guiones bajos.
+
+## Reglas para hacer contribuciones
+Para contribuir al proyecto tenes que seguir las recomendaciones de la guía de estilo de C++ de Google:
+1. Antes de hacer una contribucion recuerda formatear el codigo.
+2. No uses `using namespace` en los archivos de cabecera.
+3. No uses `#define` para definir constantes.
+
+
 
 ## Estructura del Proyecto
 
