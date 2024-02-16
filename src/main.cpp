@@ -1,52 +1,41 @@
 #include <iostream>
 #include "product.hpp"
+#include "productList.hpp"
 #include <limits>
 #include "menu.hpp"
 #include <conio.h>
 
+void helloWorld()
+{
+    std::cout << "Hola mundo\n";
+}
+
+void exitOption()
+{
+    std::cout << "Saliendo...\n";
+    exit(0);
+}
+
 int main()
 {
+    ProductList DBProduct;
 
-    /* Test del menu y primera funcionalidad */
-    Menu menu({
-        {"Agregar producto", []()
-         {
-             std::string name;
-             std::string description;
-             float price;
-             int stock;
-             int id;
+    Product testProduct("Test", "Waos e velda que el ingles abre pueltas", 32.4, 32, 5);
 
-             std::cout << "Nombre: ";
-             std::cin >> name;
-             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Descarta la nueva línea
+    DBProduct.addProduct(testProduct);
 
-             std::cout << "Descripcion: ";
-             std::getline(std::cin, description);
+    DBProduct.getProduct(5).getInfo();
 
-             std::cout << "Precio: ";
-             std::cin >> price;
+    std::vector<Product> products = DBProduct.getProducts();
 
-             std::cout << "Stock: ";
-             std::cin >> stock;
-
-             std::cout << "Id: ";
-             std::cin >> id;
-
-             Product newProduct(name, description, price, stock, id);
-             std::cout << newProduct.getInfo();
-         }},
-        {"Listar productos", []()
-         {
-             std::cout << "Presiona cualquier tecla para continuar.\n";
-             _getch();
-         }},
-        {"Salir", []()
-         {
-             std::cout << "Saliendo...\n";
-             exit(0);
-         }},
-    });
+    Menu menu(
+        {{"Hola mundo desde el menu", helloWorld}, {"Exit", exitOption}, {"Ver productos", [&products]()
+                                                                          {
+                                                                              for (int i = 0; i < products.size(); i++)
+                                                                              {
+                                                                                  std::cout << products[i].getInfo() << std::endl;
+                                                                              }
+                                                                          }}});
 
     menu.navigate();
 

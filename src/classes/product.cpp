@@ -1,18 +1,11 @@
 #include <product.hpp>
 
-/**
- * @class Product
- * @brief Represents a product in the store
- * @param name
- * @param description
- * @param price
- * @param stock
- * @param id
- */
+
 Product::Product(std::string name, std::string description, double price, int stock, int id)
     : name(name), description(description), price(price), stock(stock), id(id)
 {
 }
+
 
 // Getters
 

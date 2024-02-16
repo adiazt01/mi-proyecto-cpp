@@ -7,7 +7,7 @@ include_directories(${CMAKE_SOURCE_DIR}/include/classes)
 enable_testing()
 
 
-add_executable(project src/main.cpp src/classes/product.cpp src/classes/menu.cpp)
+add_executable(project src/main.cpp src/classes/product.cpp src/classes/menu.cpp src/classes/productList.cpp)
 
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
 set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})

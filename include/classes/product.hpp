@@ -1,20 +1,23 @@
+#ifndef PRODUCT_HPP
+#define PRODUCT_HPP
+
 #include <string>
 
 /**
  * @class Product
  * @brief Create a Product object
+ * @details This class is used to create a product object
  */
 class Product
 {
 public:
     /**
      * @brief Construct a new Product object
-     *
-     * @param name  The name of the product
-     * @param description  The description of the product
-     * @param price  The price of the product
-     * @param stock  The stock of the product
-     * @param id  The id of the product
+     * @param name
+     * @param description
+     * @param price
+     * @param stock
+     * @param id
      */
     Product(std::string name, std::string description, double price, int stock, int id);
 
@@ -38,3 +41,5 @@ private:
     int stock;
     int id;
 };
+
+#endif // PRODUCT_HPP
