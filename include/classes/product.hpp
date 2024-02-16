@@ -26,13 +26,12 @@ public:
     int getID() const;
     std::string getInfo() const;
 
-    // Setters
+private:
     void setName(std::string name);
     void setDescription(std::string description);
     void setPrice(double price);
     void setStock(int stock);
 
-private:
     std::string name;
     std::string description;
     double price;
