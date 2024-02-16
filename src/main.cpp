@@ -36,7 +36,6 @@ int main()
                                                                                   std::cout << products[i].getInfo() << std::endl;
                                                                               }
                                                                           }}});
-
     menu.navigate();
 
     return 0;

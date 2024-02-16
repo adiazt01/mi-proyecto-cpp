@@ -34,9 +34,9 @@ Si quieres contribuir al proyecto, sigue los siguientes pasos, los pasos abarcad
 5. Realiza un commit con el mensaje adecuado.
 6. Realiza un push al repositorio.
 
-
 ## Reglas para hacer contribuciones
 Para contribuir al proyecto tenes que seguir las recomendaciones de la guía de estilo de C++ de Google:
+
 1. Antes de hacer una contribucion recuerda formatear el codigo.
 2. No uses `using namespace` en los archivos de cabecera.
 3. No uses `#define` para definir constantes.

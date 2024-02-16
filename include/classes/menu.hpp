@@ -11,7 +11,6 @@ class Menu
 public:
     /**
      * @brief Construct a new Menu object
-     *
      * @param options
      */
     Menu(const std::vector<std::pair<std::string, std::function<void()>>> &options);
