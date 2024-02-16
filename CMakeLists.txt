@@ -1,6 +1,14 @@
-cmake_minimum_required(VERSION 3.10)
-project(mi-proyecto-cpp)
+cmake_minimum_required(VERSION 3.5)
+project(project VERSION 0.1.0 LANGUAGES C CXX)
 
-set(CMAKE_CXX_STANDARD 14)
+include(CTest)
+include_directories(${CMAKE_SOURCE_DIR}/include/classes)
 
-include_directories(include)
+enable_testing()
+
+
+add_executable(project src/main.cpp src/classes/product.cpp)
+
+set(CPACK_PROJECT_NAME ${PROJECT_NAME})
+set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
+include(CPack)
