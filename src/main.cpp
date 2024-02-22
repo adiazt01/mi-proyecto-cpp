@@ -5,6 +5,11 @@
 #include "menu.hpp"
 #include <conio.h>
 
+// Classes => ?Base de datos (Admin, la lista de productos, ventas, facturas, etc)
+// Controllers => Controlar las distintas opciones del meno
+// libs => Permite funciones que se repiten a lo largo del codigo (Validaciones de datos)
+
+
 void helloWorld()
 {
     std::cout << "Hola mundo\n";

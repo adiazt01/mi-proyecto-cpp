@@ -1,5 +1,7 @@
 #include <product.hpp>
 
+//GRACIA PAPA DIO
+
 
 Product::Product(std::string name, std::string description, double price, int stock, int id)
     : name(name), description(description), price(price), stock(stock), id(id)
