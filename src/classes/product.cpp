@@ -1,6 +1,6 @@
 #include <product.hpp>
 
-//GRACIA PAPA DIO
+//GRACIA PAPA DIO l
 
 
 Product::Product(std::string name, std::string description, double price, int stock, int id)
