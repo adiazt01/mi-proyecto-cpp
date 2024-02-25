@@ -82,3 +82,22 @@ void Product::setDescription(std::string description)
 {
     this->description = description;
 }
+
+/**
+ * @brief Set the price of the product
+ * @param price
+ */
+void Product::setPrice(double price)
+{
+    this->price = price;
+}
+
+/**
+ * @brief Set the stock of the product
+ * @param stock
+ */
+void Product::setStock(int stock)
+{
+    this->stock = stock;
+}
+

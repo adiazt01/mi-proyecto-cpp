@@ -28,13 +28,12 @@ public:
     int getStock() const;
     int getID() const;
     std::string getInfo() const;
-
-private:
-    void setName(std::string name);
-    void setDescription(std::string description);
     void setPrice(double price);
     void setStock(int stock);
+    void setName(std::string name);
+    void setDescription(std::string description);
 
+private:
     std::string name;
     std::string description;
     double price;

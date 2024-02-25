@@ -1,4 +1,5 @@
 #include "productList.hpp"
+#include <iostream>
 
 /**
  * @brief Allow initialize of the database of products
@@ -70,17 +71,26 @@ Product ProductList::getProduct(int id)
  * @param quantity
  * @return Product
  */
-Product ProductList::reduceStock(int id, int quantity)
+void ProductList::reduceStock(int id, int quantity)
 {
     for (int i = 0; i < products.size(); i++)
     {
         if (products[i].getID() == id)
         {
-            products[i].setStock(products[i].getStock() - quantity);
-            return products[i];
+            if (products[i].getStock() >= quantity)
+            {
+                products[i].setStock(products[i].getStock() - quantity);
+            }
+            else
+            {
+                // Handle the error: not enough stock
+                std::cerr << "Error:No hay suficiente cantidades del producto " << id << "\n";
+                return;
+            }
         }
     }
-    return Product("", "", 0, 0, 0);
+    // Handle the error: product ID not found
+    std::cerr << "Error: Product ID " << id << " not found\n";
 }
 
 /**
