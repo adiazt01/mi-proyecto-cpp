@@ -3,8 +3,7 @@
 /**
  * @brief Allow initialize of the database of products
  */
-ProductList::ProductList(){
-};
+ProductList::ProductList(){};
 
 /**
  * @brief Add a product to the list
@@ -59,6 +58,25 @@ Product ProductList::getProduct(int id)
     {
         if (products[i].getID() == id)
         {
+            return products[i];
+        }
+    }
+    return Product("", "", 0, 0, 0);
+}
+
+/**
+ * @brief Reduce the stock of a product
+ * @param id
+ * @param quantity
+ * @return Product
+ */
+Product ProductList::reduceStock(int id, int quantity)
+{
+    for (int i = 0; i < products.size(); i++)
+    {
+        if (products[i].getID() == id)
+        {
+            products[i].setStock(products[i].getStock() - quantity);
             return products[i];
         }
     }

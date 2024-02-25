@@ -9,7 +9,6 @@
 // Controllers => Controlar las distintas opciones del meno
 // libs => Permite funciones que se repiten a lo largo del codigo (Validaciones de datos)
 
-
 void helloWorld()
 {
     std::cout << "Hola mundo\n";
@@ -34,13 +33,13 @@ int main()
     std::vector<Product> products = DBProduct.getProducts();
 
     Menu menu(
-        {{"Hola mundo desde el menu", helloWorld}, {"Exit", exitOption}, {"Ver productos", [&products]()
-                                                                          {
-                                                                              for (int i = 0; i < products.size(); i++)
-                                                                              {
-                                                                                  std::cout << products[i].getInfo() << std::endl;
-                                                                              }
-                                                                          }}});
+        {{"\033[32mProducto agregado exitosamente!\033[0m", helloWorld}, {"Exit", exitOption}, {"Ver productos", [&products]()
+                                                                                                {
+                                                                                                    for (int i = 0; i < products.size(); i++)
+                                                                                                    {
+                                                                                                        std::cout << products[i].getInfo() << std::endl;
+                                                                                                    }
+                                                                                                }}});
     menu.navigate();
 
     return 0;
