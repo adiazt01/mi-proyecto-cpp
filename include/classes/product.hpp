@@ -28,6 +28,8 @@ public:
     int getStock() const;
     int getID() const;
     std::string getInfo() const;
+
+    // Setters
     void setPrice(double price);
     void setStock(int stock);
     void setName(std::string name);

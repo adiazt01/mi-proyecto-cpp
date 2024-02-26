@@ -7,9 +7,10 @@ public:
     ProductList();
 
     void addProduct(Product product);
-    void removeProduct(int id);
-    void updateProduct(int id, Product product);
 
+    void removeProduct(int id);
+    
+    void updateProduct(int id, Product product);
     void reduceStock(int id, int quantity);
 
     Product getProduct(int id);

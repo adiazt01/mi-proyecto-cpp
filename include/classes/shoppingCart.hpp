@@ -13,9 +13,10 @@ public:
 
     void addProduct(Product product);
     void removeProduct(Product product);
+
+    void clearCart();
     void displayProducts();
     void checkout();
-    void clearCart();
     void setTotalPrice(double price);
     double getTotalPrice();
     void setTotalTax(double tax);
