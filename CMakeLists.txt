@@ -4,6 +4,7 @@ project(project VERSION 0.1.0 LANGUAGES C CXX)
 include(CTest)
 
 include_directories(${CMAKE_SOURCE_DIR}/include/classes)
+include_directories(${CMAKE_SOURCE_DIR}/include/controllers)
 include_directories(${CMAKE_SOURCE_DIR}/include/routes)
 
 

@@ -83,13 +83,11 @@ void ProductList::reduceStock(int id, int quantity)
             }
             else
             {
-                // Handle the error: not enough stock
                 std::cerr << "Error:No hay suficiente cantidades del producto " << id << "\n";
                 return;
             }
         }
     }
-    // Handle the error: product ID not found
     std::cerr << "Error: Product ID " << id << " not found\n";
 }
 
