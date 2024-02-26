@@ -31,3 +31,5 @@ private:
     double totalTax;
     double totalCost;
 };
+
+#endif // SHOPPINGCART_HPP

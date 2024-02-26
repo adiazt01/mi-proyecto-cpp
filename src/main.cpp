@@ -22,24 +22,9 @@ void exitOption()
 
 int main()
 {
-    ProductList DBProduct;
-
-    Product testProduct("Test", "Waos e velda que el ingles abre pueltas", 32.4, 32, 5);
-
-    DBProduct.addProduct(testProduct);
-
-    DBProduct.getProduct(5).getInfo();
-
-    std::vector<Product> products = DBProduct.getProducts();
-
     Menu menu(
-        {{"\033[32mProducto agregado exitosamente!\033[0m", helloWorld}, {"Exit", exitOption}, {"Ver productos", [&products]()
-                                                                                                {
-                                                                                                    for (int i = 0; i < products.size(); i++)
-                                                                                                    {
-                                                                                                        std::cout << products[i].getInfo() << std::endl;
-                                                                                                    }
-                                                                                                }}});
+        {{"\033[32mProducto agregado exitosamente!\033[0m", helloWorld}, {"Exit", exitOption}});
+
     menu.navigate();
 
     return 0;
