@@ -14,13 +14,15 @@ public:
      * @param options
      */
     Menu(const std::vector<std::pair<std::string, std::function<void()>>> &options);
+
     void display() const;
     void navigate();
+    void exitOption();
 
 private:
     std::vector<std::pair<std::string, std::function<void()>>> options;
     int option = 0;
-    bool exit = false;
+    bool exitSelected = false;
 };
 
 #endif // MENU_H

@@ -7,9 +7,13 @@
 void adminProductRoutes()
 {
     Menu menu({{"Agregar producto", addProduct},
+               {"Actualizar producto", updateProduct},
                {"Eliminar producto", removeProduct},
                {"Ver productos", displayProducts},
-               {"Salir", exitOption}});
+               {"Salir", [&menu]()
+                {
+                    menu.exitOption();
+                }}});
 
     menu.navigate();
 }
@@ -17,7 +21,10 @@ void adminProductRoutes()
 void adminRoutes()
 {
     Menu menu({{"1. Productos", adminProductRoutes},
-               {"Salir", exitOption}});
+               {"Salir", [&menu]()
+                {
+                    menu.exitOption();
+                }}});
 
     menu.navigate();
 }

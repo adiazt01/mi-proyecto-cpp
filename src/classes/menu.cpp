@@ -17,6 +17,12 @@ void Menu::display() const
     }
 }
 
+void Menu::exitOption()
+{
+    this->exitSelected = true;
+};
+
+
 void Menu::navigate()
 {
     int key = 0;
@@ -46,10 +52,8 @@ void Menu::navigate()
         if (key == 13)
         {                             // Tecla Enter
             options[option].second(); // Ejecuta la función de la opción seleccionada
-            if (exit)
+            if (exitSelected)
                 break; // Si la opción seleccionada es "Exit", sale del bucle
-            std::cout << "Presiona cualquier tecla para continuar.\n";
-            _getch(); // Espera a que el usuario presione una tecla
         }
     } while (true);
-}
+};

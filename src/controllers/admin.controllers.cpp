@@ -59,6 +59,58 @@ void removeProduct()
     db.removeProduct(id);
 }
 
+void updateProduct()
+{
+    system("cls");
+
+    int id;
+    std::cout << "ID del producto: ";
+    while (!(std::cin >> id))
+    {
+        std::cout << "Por favor, ingresa un número válido para el ID del producto: ";
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    }
+    std::cin.ignore();
+
+    Product product = db.getProduct(id);
+
+    std::string name;
+    std::string description;
+    double price;
+    int stock;
+
+    std::cout << "Nombre: ";
+    std::getline(std::cin, name);
+
+    std::cout << "Descripcion: ";
+    std::getline(std::cin, description);
+
+    std::cout << "Precio: ";
+    while (!(std::cin >> price))
+    {
+        std::cout << "Por favor, ingresa un número válido para el precio: ";
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    }
+
+    std::cout << "Stock: ";
+    while (!(std::cin >> stock))
+    {
+        std::cout << "Por favor, ingresa un número válido para el stock: ";
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    }
+    std::cin.ignore();
+
+    product.setName(name);
+    product.setDescription(description);
+    product.setPrice(price);
+    product.setStock(stock);
+
+    db.updateProduct(id, product);
+}
+
 void displayProducts()
 {
     system("cls");
