@@ -1,7 +1,14 @@
 #include <product.hpp>
 
-// GRACIA PAPA DIO l
-
+/**
+ * @brief Constructs a new Product object.
+ * 
+ * @param name The name of the product.
+ * @param description The description of the product.
+ * @param price The price of the product.
+ * @param stock The stock quantity of the product.
+ * @param id The unique identifier of the product.
+ */
 Product::Product(std::string name, std::string description, double price, int stock, int id)
     : name(name), description(description), price(price), stock(stock), id(id)
 {
