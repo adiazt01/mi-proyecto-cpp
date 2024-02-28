@@ -12,17 +12,11 @@ public:
     ShoppingCart();
 
     void addProduct(Product product);
-    void removeProduct(Product product);
 
     void clearCart();
     void displayProducts();
-    void checkout();
     void setTotalPrice(double price);
     double getTotalPrice();
-    void setTotalTax(double tax);
-    double getTotalTax();
-    void setTotalCost(double cost);
-    double getTotalCost();
 
 private:
     std::vector<Product> products;

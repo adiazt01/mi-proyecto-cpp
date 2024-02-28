@@ -9,6 +9,5 @@ void addProduct();
 void removeProduct();
 void displayProducts();
 void updateProduct();
-void exitOption();
 
 #endif // ADMIN_CONTROLLERS_H

@@ -112,3 +112,25 @@ void Client::setPhonenumber(long long phonenumber)
     this->phonenumber = phonenumber;
 };
 
+/**
+ * @brief Gets the shopping cart of the client.
+ * 
+ * This function returns the shopping cart of the client.
+ * 
+ * @return ShoppingCart The shopping cart of the client.
+ */
+ShoppingCart Client::getShoppingCart()
+{
+    return shoppingcart;
+};
+
+void Client::confirmPayment()
+{
+    hasPaid = true;
+};
+
+bool Client::hasConfirmedPayment()
+{
+    return hasPaid;
+};
+

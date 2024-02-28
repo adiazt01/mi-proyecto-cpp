@@ -87,11 +87,36 @@ public:
      */
     void setPhonenumber(long long phonenumber);
 
+    
+
+    /**
+     * @brief Confirms the payment for a client.
+     *
+     * This function confirms the payment for a client by updating the payment status
+     * and recording the payment details.
+     *
+     * @param amount The amount of the payment.
+     * @return True if the payment is successfully confirmed, false otherwise.
+     */
+    void confirmPayment();
+
+    /**
+     * @brief Checks whether the client has confirmed their payment.
+     *
+     * This function checks whether the client has confirmed their payment.
+     *
+     * @return True if the client has confirmed their payment, false otherwise.
+     */
+    bool hasConfirmedPayment();
+
+    ShoppingCart getShoppingCart();
+
 private:    
     std::string name; /**< The name of the client. */
     std::string lastname; /**< The lastname of the client. */
     int id; /**< The ID of the client. */
     long long phonenumber; /**< The phone number of the client. */
+    bool hasPaid; /**< Whether the client has confirmed their payment. */
 };
 
 #endif // CLIENT_HPP
