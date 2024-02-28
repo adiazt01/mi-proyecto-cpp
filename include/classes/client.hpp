@@ -87,11 +87,6 @@ public:
      */
     void setPhonenumber(long long phonenumber);
 
-    /**
-     * @brief Prints the information of the client.
-     */
-    void printClient();
-
 private:    
     std::string name; /**< The name of the client. */
     std::string lastname; /**< The lastname of the client. */
