@@ -26,7 +26,7 @@ public:
     std::string getDescription() const;
     double getPrice() const;
     int getStock() const;
-    int getID() const;
+    int getId() const;
     std::string getInfo() const;
 
     // Setters
@@ -34,6 +34,7 @@ public:
     void setStock(int stock);
     void setName(std::string name);
     void setDescription(std::string description);
+    void setId(int id);
 
 private:
     std::string name;

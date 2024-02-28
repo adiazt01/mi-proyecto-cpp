@@ -1,10 +1,6 @@
 #include "productList.hpp"
 #include <iostream>
 
-/**
- * @brief Allow initialize of the database of products
- */
-ProductList::ProductList(){};
 
 /**
  * @brief Add a product to the list
@@ -12,6 +8,7 @@ ProductList::ProductList(){};
  */
 void ProductList::addProduct(Product product)
 {
+    product.setId(nextId++);
     products.push_back(product);
 }
 
@@ -23,7 +20,7 @@ void ProductList::removeProduct(int id)
 {
     for (int i = 0; i < products.size(); i++)
     {
-        if (products[i].getID() == id)
+        if (products[i].getId() == id)
         {
             products.erase(products.begin() + i);
             return;
@@ -40,7 +37,7 @@ void ProductList::updateProduct(int id, Product product)
 {
     for (int i = 0; i < products.size(); i++)
     {
-        if (products[i].getID() == id)
+        if (products[i].getId() == id)
         {
             products[i] = product;
             return;
@@ -57,12 +54,21 @@ Product ProductList::getProduct(int id)
 {
     for (int i = 0; i < products.size(); i++)
     {
-        if (products[i].getID() == id)
+        if (products[i].getId() == id)
         {
             return products[i];
         }
     }
     return Product("", "", 0, 0, 0);
+}
+
+/**
+ * @brief Get the size of the list
+ * @return size_t
+ */
+size_t ProductList::size()
+{
+    return products.size();
 }
 
 /**
@@ -75,7 +81,7 @@ void ProductList::reduceStock(int id, int quantity)
 {
     for (int i = 0; i < products.size(); i++)
     {
-        if (products[i].getID() == id)
+        if (products[i].getId() == id)
         {
             if (products[i].getStock() >= quantity)
             {

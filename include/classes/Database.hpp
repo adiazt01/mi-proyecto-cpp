@@ -9,7 +9,15 @@
 class Database
 {
 public:
-    Database();
+
+    static Database &getInstance()
+    {
+        static Database instance;
+        return instance;
+    }
+
+    Database(Database const &) = delete;
+    void operator=(Database const &) = delete;
 
     void addProduct(const Product &product);
     void removeProduct(int id);
@@ -20,5 +28,9 @@ public:
     ProductList getProducts();
 
 private:
+    Database(){}
+
     ProductList products;
 };
+
+#endif // DATABASE_HPP

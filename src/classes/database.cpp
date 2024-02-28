@@ -2,11 +2,6 @@
 #include <productList.hpp>
 #include <database.hpp>
 
-Database::Database()
-{
-}
-
-
 /// @brief Adds a product to the database
 /// @param product 
 void Database::addProduct(const Product &product)
@@ -49,5 +44,7 @@ ProductList Database::getProducts()
 {
     return products;
 }
+
+
 
 

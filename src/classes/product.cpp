@@ -49,7 +49,7 @@ int Product::getStock() const
  * @brief Get the id of the product
  * @return int
  */
-int Product::getID() const
+int Product::getId() const
 {
     return id;
 }
@@ -101,3 +101,11 @@ void Product::setStock(int stock)
     this->stock = stock;
 }
 
+/**
+ * @brief Set the id of the product
+ * @param id
+ */
+void Product::setId(int id)
+{
+    this->id = id;
+}
