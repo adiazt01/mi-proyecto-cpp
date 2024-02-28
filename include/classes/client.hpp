@@ -57,7 +57,7 @@ public:
      */
     long long getPhonenumber();
 
-    Shoppingcart shoppingcart;
+    ShoppingCart shoppingcart;
 
     /**
      * @brief Sets the name of the client.
@@ -92,6 +92,6 @@ private:
     std::string lastname; /**< The lastname of the client. */
     int id; /**< The ID of the client. */
     long long phonenumber; /**< The phone number of the client. */
-}
+};
 
-#endif CLIENT_HPP
+#endif // CLIENT_HPP
