@@ -1,6 +1,7 @@
 #include <simulate.controllers.hpp>
 #include <clientQueue.hpp>
 #include <client.hpp>
+#include <product.hpp>
 #include <database.hpp>
 #include <random>
 #include <chrono>
@@ -63,14 +64,14 @@ void simulate()
         int time = timeDistribution(generator);
         int numProducts = numProductsDistribution(generator);
 
-        Client client(name, lastName, phoneNumber);
+        Client client(name, lastName, 0, phoneNumber);
 
         for (int i = 0; i < numProducts; ++i)
         {
             int productId = i + 1;
             int quantity = i + 1;
 
-            client.addProductToCart(productId, quantity);
+            client.shoppingcart.addProduct(db.getProduct(productId));
         }
 
         clientQueue.addClient(client);

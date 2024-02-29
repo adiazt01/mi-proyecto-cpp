@@ -12,6 +12,7 @@ enable_testing()
 
 file(GLOB_RECURSE SOURCES "src/*.cpp")
 
+
 add_executable(project ${SOURCES})
 
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
