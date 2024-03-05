@@ -8,4 +8,6 @@ void processClient(ClientQueue &clientQueue);
 
 void simulate();
 
+void simulateShop();
+
 #endif // SIMULATE_CONTROLLERS_H

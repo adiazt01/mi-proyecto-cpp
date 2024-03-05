@@ -1,14 +1,13 @@
 #include <iostream>
 #include <menu.hpp>
 #include <admin.routes.hpp>
-#include <simulate.controllers.hpp>
-#include <simulate.controllers.hpp>
+#include <simulate.routes.hpp>
 
 int main()
 {
     Menu menu({{"1. Administrar contenido", adminRoutes},
-                {"2. Trabajar", simulate},
-               {"Salir", [&menu]()
+               {"2. Trabajar", simulateRoutes},
+               {"3. Salir", [&menu]()
                 { menu.exitOption(); }}});
     menu.navigate();
 

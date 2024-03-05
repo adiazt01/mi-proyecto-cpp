@@ -6,6 +6,7 @@ include(CTest)
 include_directories(${CMAKE_SOURCE_DIR}/include/classes)
 include_directories(${CMAKE_SOURCE_DIR}/include/controllers)
 include_directories(${CMAKE_SOURCE_DIR}/include/routes)
+include_directories(${CMAKE_SOURCE_DIR}/include)
 
 
 enable_testing()

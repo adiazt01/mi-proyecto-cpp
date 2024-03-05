@@ -6,6 +6,8 @@
 #include <random>
 #include <chrono>
 #include <thread>
+#include <atomic>
+#include "globals.hpp"
 
 void processClient(ClientQueue &clientQueue, Database &db, std::default_random_engine &generator, std::uniform_int_distribution<int> &productDistribution, std::uniform_int_distribution<int> &timeDistribution, int numProducts)
 {
@@ -14,6 +16,7 @@ void processClient(ClientQueue &clientQueue, Database &db, std::default_random_e
         Client client = clientQueue.getNextClient();
 
         auto start = std::chrono::high_resolution_clock::now();
+        double maxTime = 10 * 60; // Tiempo máximo en segundos
 
         for (int i = 0; i < numProducts; ++i)
         {
@@ -32,16 +35,26 @@ void processClient(ClientQueue &clientQueue, Database &db, std::default_random_e
             {
                 std::cout << "El cliente " << client.getName() << " ha excedido el tiempo máximo y será enviado al final de la cola." << std::endl;
                 clientQueue.addClient(client);
-                return; // Termina la función si el cliente excede el tiempo máximo
+                break;
             }
+
+            double timeRemaining = maxTime - elapsed.count();
+            std::cout << "Tiempo restante para el cliente " << client.getName() << ": " << timeRemaining << " segundos." << std::endl;
         }
 
         std::cout << "El cliente " << client.getName() << " " << client.getLastname() << " ha terminado de comprar." << std::endl;
+
+        std::string input;
+        std::cout << "¿Desea continuar con la simulación? (s/n): ";
+        std::cin >> input;
+        if (input == "n" || input == "N")
+        {
+            continueSimulation = false;
+        }
     }
 }
 
-
-void simulate()
+void simulateShop()
 {
     Database &db = Database::getInstance();
     ClientQueue clientQueue;
@@ -68,11 +81,10 @@ void simulate()
     std::uniform_int_distribution<int> numProductsDistribution(1, 30);
     std::uniform_int_distribution<int> productDistribution(1, db.getProducts().size() - 1);
 
-    
     int maxClients = 100; // Número máximo de clientes a procesar
-    int clientCount = 0; // Contador de clientes procesados
+    int clientCount = 0;  // Contador de clientes procesados
 
-    while (clientCount < maxClients)
+    while (clientCount < maxClients && continueSimulation)
     {
         std::this_thread::sleep_for(std::chrono::seconds(timeDistribution(generator)));
         std::string name = names[nameDistribution(generator)];
@@ -86,5 +98,24 @@ void simulate()
 
         processClient(clientQueue, db, generator, productDistribution, timeDistribution, numProducts);
         clientCount++;
+
+        if (!continueSimulation)
+        {
+            break;
+        }
+    }
+}
+
+void simulate()
+{
+    simulateShop();
+
+    if (!continueSimulation)
+    {
+        std::cout << "Simulación terminada." << std::endl;
+    }
+    else
+    {
+        std::cout << "Simulación cancelada." << std::endl;
     }
 }
