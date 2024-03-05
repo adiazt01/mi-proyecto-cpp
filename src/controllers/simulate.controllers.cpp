@@ -32,15 +32,14 @@ void processClient(ClientQueue &clientQueue, Database &db, std::default_random_e
             {
                 std::cout << "El cliente " << client.getName() << " ha excedido el tiempo máximo y será enviado al final de la cola." << std::endl;
                 clientQueue.addClient(client);
-                return;
+                return; // Termina la función si el cliente excede el tiempo máximo
             }
         }
 
         std::cout << "El cliente " << client.getName() << " " << client.getLastname() << " ha terminado de comprar." << std::endl;
-
-        clientQueue.removeClient();
     }
 }
+
 
 void simulate()
 {
@@ -69,7 +68,11 @@ void simulate()
     std::uniform_int_distribution<int> numProductsDistribution(1, 30);
     std::uniform_int_distribution<int> productDistribution(1, db.getProducts().size() - 1);
 
-    while (true)
+    
+    int maxClients = 100; // Número máximo de clientes a procesar
+    int clientCount = 0; // Contador de clientes procesados
+
+    while (clientCount < maxClients)
     {
         std::this_thread::sleep_for(std::chrono::seconds(timeDistribution(generator)));
         std::string name = names[nameDistribution(generator)];
@@ -82,5 +85,6 @@ void simulate()
         clientQueue.addClient(client);
 
         processClient(clientQueue, db, generator, productDistribution, timeDistribution, numProducts);
+        clientCount++;
     }
 }

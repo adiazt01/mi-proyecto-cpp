@@ -17,12 +17,14 @@ public:
     size_t size();
 
     // Añade este operador para acceder a los elementos por índice
-    Product& operator[](size_t index) {
+    Product &operator[](size_t index)
+    {
         return products[index];
     }
 
     // Y este para acceder a los elementos por índice en instancias const
-    const Product& operator[](size_t index) const {
+    const Product &operator[](size_t index) const
+    {
         return products[index];
     }
 
@@ -30,6 +32,7 @@ public:
     std::vector<Product> getProducts();
 
 private:
+    
     std::vector<Product> products;
     int nextId;
 };

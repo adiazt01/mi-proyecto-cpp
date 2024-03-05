@@ -13,7 +13,6 @@
 class Client
 {
 public:
-
     /**
      * @brief Constructs a new Client object with the given parameters.
      * 

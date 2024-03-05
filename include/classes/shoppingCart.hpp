@@ -6,7 +6,7 @@
 #include <string>
 #include "product.hpp"
 
-class ShoppingCart
+class ShoppingCart 
 {
 public:
     ShoppingCart();
