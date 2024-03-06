@@ -16,7 +16,6 @@ ClientQueue::ClientQueue(){};
  */
 void ClientQueue::addClient(Client client)
 {
-    std::cout << "Añadiendo a " << client.getName() << " a la cola" << std::endl;
     clients.push(client);
 };
 

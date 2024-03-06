@@ -26,10 +26,10 @@ void processClient(Database &db, std::default_random_engine &generator, std::uni
             client.shoppingcart.addProduct(product);
             db.reduceStock(product.getId(), 1);
 
-            std::cout << "El cliente " << client.getName() << " " << client.getLastname() << " ha agregado el producto " << product.getName() << " a su carrito." << std::endl;
+            std::cout << "+ " << product.getName() << " $" << product.getPrice() << std::endl;
+
             int time = timeDistribution(generator);
             std::this_thread::sleep_for(std::chrono::seconds(time));
-
             auto end = std::chrono::high_resolution_clock::now();
             std::chrono::duration<double> elapsed = end - start;
 
@@ -41,27 +41,21 @@ void processClient(Database &db, std::default_random_engine &generator, std::uni
             }
 
             double timeRemaining = maxTime - elapsed.count();
-            std::cout << "Tiempo restante para el cliente " << client.getName() << ": " << timeRemaining << " segundos." << std::endl;
         }
-
-        std::cout << "El cliente " << client.getName() << " " << client.getLastname() << " Finalizo su compra." << std::endl;
 
         Bill bill = Bill(client.getName(), client.getLastname(), client.getPhonenumber(), client.shoppingcart.getProducts(), client.shoppingcart.getTotalPrice());
 
         db.addBill(bill);
 
-        std::pair<Product, int> mostSold = db.getMostSoldProduct();
-        Product mostSoldProduct = mostSold.first;
-        int totalSold = mostSold.second;
-        std::cout << "El producto más vendido es " << mostSoldProduct.getName()
-                  << " con " << totalSold << " unidades vendidas." << std::endl;
+        /*
+            std::pair<Product, int> mostSold = db.getMostSoldProduct();
+            Product mostSoldProduct = mostSold.first;
+            int totalSold = mostSold.second;
+            std::cout << "El producto más vendido es " << mostSoldProduct.getName()
+            << " con " << totalSold << " unidades vendidas." << std::endl;
+        */
 
-        std::cout << "El cliente " << client.getName() << " " << client.getLastname() << " ha pagado un total de " << client.shoppingcart.getTotalPrice() << " por sus productos." << std::endl;
-
-        for (auto product : client.shoppingcart.getProducts())
-        {
-            std::cout << "El cliente " << client.getName() << " " << client.getLastname() << " ha comprado " << product.getName() << " a " << product.getPrice() << " c/u." << std::endl;
-        }
+        std::cout << "El cliente " << client.getName() << " " << client.getLastname() << " ha pagado un total de $" << client.shoppingcart.getTotalPrice() << " por sus productos." << std::endl;
 
         std::string input;
         std::cout << "¿Desea continuar con la simulación? (s/n): ";
@@ -78,15 +72,18 @@ void simulateShop()
     Database &db = Database::getInstance();
     ClientQueue clientQueue;
 
-    for (int i = 0; i < 3; ++i)
+    if (db.getProducts().size() == 0)
     {
-        Product product(
-            "Product " + std::to_string(i + 1),
-            "Description of product " + std::to_string(i + 1),
-            10.0 * (i + 1),
-            100);
+        for (int i = 0; i < 3; ++i)
+        {
+            Product product(
+                "Product " + std::to_string(i + 1),
+                "Description of product " + std::to_string(i + 1),
+                10.0 * (i + 1),
+                100);
 
-        db.addProduct(product);
+            db.addProduct(product);
+        }
     }
 
     std::vector<std::string> names = {"Alice", "Bob", "Charlie", "Dave"};
@@ -104,6 +101,11 @@ void simulateShop()
 
     while (clientCount < maxClients && continueSimulation)
     {
+        system("cls");
+        std::cout << "Simulación de la tienda" << std::endl;
+        std::cout << "-----------------------" << std::endl
+                  << std::endl;
+
         std::this_thread::sleep_for(std::chrono::seconds(timeDistribution(generator)));
         std::string name = names[nameDistribution(generator)];
         std::string lastName = lastNames[nameDistribution(generator)];
@@ -112,6 +114,7 @@ void simulateShop()
 
         Client client(name, lastName, 0, phoneNumber);
 
+        std::cout << "Añadiendo a " << client.getName() << " a la cola 🐧" << std::endl << std::endl;
         db.addClient(client);
 
         processClient(db, generator, productDistribution, timeDistribution, numProducts);
