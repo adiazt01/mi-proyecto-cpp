@@ -1,7 +1,6 @@
 #include "productList.hpp"
 #include <iostream>
 
-
 /**
  * @brief Add a product to the list
  * @param product
@@ -56,10 +55,11 @@ Product ProductList::getProduct(int id)
     {
         if (products[i].getId() == id)
         {
-            return products[i];
+            return products[i]; // return the product itself, not a pointer to it
         }
     }
-    return Product("", "", 0, 0, 0);
+
+    throw std::runtime_error("Product not found");
 }
 
 /**
@@ -81,11 +81,15 @@ void ProductList::reduceStock(int id, int quantity)
 {
     for (int i = 0; i < products.size(); i++)
     {
+        std::cout << "Product ID: " << products[i].getId() << "\n";
+        std::cout << id << "\n";
+
         if (products[i].getId() == id)
         {
             if (products[i].getStock() >= quantity)
             {
                 products[i].setStock(products[i].getStock() - quantity);
+                return;
             }
             else
             {
@@ -94,7 +98,6 @@ void ProductList::reduceStock(int id, int quantity)
             }
         }
     }
-    std::cerr << "Error: Product ID " << id << " not found\n";
 }
 
 /**

@@ -39,7 +39,7 @@ void addProduct()
     }
     std::cin.ignore();
 
-    Product product(name, description, price, stock, 1);
+    Product product(name, description, price, stock);
     db.addProduct(product);
 }
 

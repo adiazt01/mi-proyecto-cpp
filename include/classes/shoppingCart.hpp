@@ -6,7 +6,7 @@
 #include <string>
 #include "product.hpp"
 
-class ShoppingCart 
+class ShoppingCart
 {
 public:
     ShoppingCart();
@@ -14,9 +14,11 @@ public:
     void addProduct(Product product);
 
     void clearCart();
-    
+
     double getTotalPrice();
-    
+
+    std::vector<Product> getProducts();
+
 private:
     std::vector<Product> products;
 

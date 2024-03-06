@@ -11,7 +11,6 @@ ShoppingCart::ShoppingCart()
     totalCost = 0;
 }
 
-
 void ShoppingCart::addProduct(Product product)
 {
     products.push_back(product);
@@ -29,4 +28,9 @@ void ShoppingCart::clearCart()
     totalPrice = 0;
     totalTax = 0;
     totalCost = 0;
+}
+
+std::vector<Product> ShoppingCart::getProducts()
+{
+    return products;
 }

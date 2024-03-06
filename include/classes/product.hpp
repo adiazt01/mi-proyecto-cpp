@@ -17,9 +17,8 @@ public:
      * @param description
      * @param price
      * @param stock
-     * @param id
      */
-    Product(std::string name, std::string description, double price, int stock, int id);
+    Product(std::string name, std::string description, double price, int stock);
 
     // Getters
     std::string getName() const;

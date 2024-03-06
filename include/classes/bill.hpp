@@ -4,26 +4,38 @@
 #include <vector>
 #include "product.hpp"
 
+/**
+ * @brief Bill class
+ */
 class Bill
 {
 public:
-    Bill(std::string name, std::string lastname, std::string numberPhone, std::vector<Product> products, double total);
+    /**
+     * @brief Construct a new Bill object
+     *
+     * @param name
+     * @param lastname
+     * @param numberPhone
+     * @param products
+     * @param total
+     */
+    Bill(std::string name, std::string lastname, long long int numberPhone, std::vector<Product> products, double total);
 
     std::string getName();
     std::string getLastname();
-    std::string getNumberPhone();
+    long long int getNumberPhone();
     int getId();
 
     void setName(std::string name);
     void setLastname(std::string lastname);
-    void setNumberPhone(std::string numberPhone);
+    void setNumberPhone(long long int numberPhone);
     void setId(int id);
 
 private:
     int id;
     std::string name;
     std::string lastname;
-    std::string numberPhone;
+    long long int numberPhone;
     std::vector<Product> products;
     double total;
 };

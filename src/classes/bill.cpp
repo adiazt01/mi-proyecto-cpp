@@ -1,6 +1,6 @@
 #include "bill.hpp"
 
-Bill::Bill(std::string name, std::string lastname, std::string numberPhone, std::vector<Product> products, double total)
+Bill::Bill(std::string name, std::string lastname, long long int numberPhone, std::vector<Product> products, double total)
     : id(id), name(name), lastname(lastname), numberPhone(numberPhone), products(products), total(total){};
 
 std::string Bill::getName()
@@ -13,7 +13,7 @@ std::string Bill::getLastname()
     return lastname;
 }
 
-std::string Bill::getNumberPhone()
+long long int Bill::getNumberPhone()
 {
     return numberPhone;
 }
@@ -33,7 +33,7 @@ void Bill::setLastname(std::string lastname)
     this->lastname = lastname;
 }
 
-void Bill::setNumberPhone(std::string numberPhone)
+void Bill::setNumberPhone(long long int numberPhone)
 {
     this->numberPhone = numberPhone;
 }

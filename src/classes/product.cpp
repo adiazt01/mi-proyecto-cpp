@@ -9,8 +9,8 @@
  * @param stock The stock quantity of the product.
  * @param id The unique identifier of the product.
  */
-Product::Product(std::string name, std::string description, double price, int stock, int id)
-    : name(name), description(description), price(price), stock(stock), id(id)
+Product::Product(std::string name, std::string description, double price, int stock)
+    : name(name), description(description), price(price), stock(stock)
 {
 }
 
