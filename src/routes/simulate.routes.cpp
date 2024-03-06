@@ -6,12 +6,12 @@
 
 void simulateRoutes()
 {
-    Menu menu({{"Simular", []()
+    Menu menu({{"1. Simular", []()
                 {
                     continueSimulation = true;
                     simulateShop();
                 }},
-               {"Salir", [&menu]()
+               {"2. Salir", [&menu]()
                 {
                     continueSimulation = false;
                     menu.exitOption();

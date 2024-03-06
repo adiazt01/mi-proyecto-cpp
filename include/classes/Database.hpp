@@ -5,6 +5,8 @@
 #include <vector>
 #include "product.hpp"
 #include "productList.hpp"
+#include "bill.hpp"
+#include "billList.hpp"
 
 class Database
 {
@@ -19,6 +21,7 @@ public:
     Database(Database const &) = delete;
     void operator=(Database const &) = delete;
 
+    // Product methods
     void addProduct(const Product &product);
     void removeProduct(int id);
     void updateProduct(int id, const Product &product);
@@ -27,9 +30,14 @@ public:
     Product getProduct(int id);
     ProductList getProducts();
 
+    // Bill methods
+    void addBill(const Bill &bill);
+    BillList getBills();
+
 private:
     Database(){}
 
+    BillList bills;
     ProductList products;
 };
 

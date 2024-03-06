@@ -18,6 +18,11 @@ void ShoppingCart::addProduct(Product product)
     totalPrice += product.getPrice();
 }
 
+double ShoppingCart::getTotalPrice()
+{
+    return totalPrice;
+}
+
 void ShoppingCart::clearCart()
 {
     products.clear();

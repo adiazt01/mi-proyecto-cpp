@@ -14,10 +14,9 @@ public:
     void addProduct(Product product);
 
     void clearCart();
-    void displayProducts();
-    void setTotalPrice(double price);
+    
     double getTotalPrice();
-
+    
 private:
     std::vector<Product> products;
 

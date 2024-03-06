@@ -16,7 +16,7 @@ void processClient(ClientQueue &clientQueue, Database &db, std::default_random_e
         Client client = clientQueue.getNextClient();
 
         auto start = std::chrono::high_resolution_clock::now();
-        double maxTime = 10 * 60; // Tiempo máximo en segundos
+        double maxTime = 10 * 60;
 
         for (int i = 0; i < numProducts; ++i)
         {
@@ -43,6 +43,7 @@ void processClient(ClientQueue &clientQueue, Database &db, std::default_random_e
         }
 
         std::cout << "El cliente " << client.getName() << " " << client.getLastname() << " ha terminado de comprar." << std::endl;
+        std::cout << "El total de la compra es: " << client.shoppingcart.getTotalPrice() << std::endl;
 
         std::string input;
         std::cout << "¿Desea continuar con la simulación? (s/n): ";
@@ -81,8 +82,8 @@ void simulateShop()
     std::uniform_int_distribution<int> numProductsDistribution(1, 30);
     std::uniform_int_distribution<int> productDistribution(1, db.getProducts().size() - 1);
 
-    int maxClients = 100; // Número máximo de clientes a procesar
-    int clientCount = 0;  // Contador de clientes procesados
+    int maxClients = 100;
+    int clientCount = 0;
 
     while (clientCount < maxClients && continueSimulation)
     {

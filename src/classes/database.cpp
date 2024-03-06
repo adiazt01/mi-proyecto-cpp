@@ -1,6 +1,8 @@
 #include <product.hpp>
 #include <productList.hpp>
 #include <database.hpp>
+#include <bill.hpp>
+#include <billList.hpp>
 
 /// @brief Adds a product to the database
 /// @param product 
@@ -45,6 +47,16 @@ ProductList Database::getProducts()
     return products;
 }
 
+/// @brief Adds a bill to the database
+/// @param bill
+void Database::addBill(const Bill &bill)
+{
+    bills.addBill(bill);
+}
 
-
-
+/// @brief Gets all the bills from the database
+/// @return vector<Bill>
+BillList Database::getBills()
+{
+    return bills;
+}
