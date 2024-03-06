@@ -5,21 +5,21 @@
 #include <queue>
 #include <client.hpp>
 
-class ClientQueue {
-    public:
-        ClientQueue();
+class ClientQueue
+{
+public:
+    ClientQueue();
 
-        void addClient(Client client);
+    void addClient(Client client);
 
-        Client getNextClient();
+    Client getNextClient();
 
-        bool isEmpty();
+    bool isEmpty() const;
 
-        void removeClient();
+    int getSize() const;
 
-        void displayClients();
-    private:
-        std::queue<Client> clients;
+private:
+    std::queue<Client> clients;
 };
 
 #endif // CLIENTQUEUE_HPP

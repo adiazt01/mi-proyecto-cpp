@@ -20,26 +20,6 @@ void ClientQueue::addClient(Client client)
     clients.push(client);
 };
 
-/**
- * @brief Remove a client from the queue
- */
-void ClientQueue::removeClient()
-{
-    clients.pop();
-};
-
-/**
- * @brief Display all clients in the queue
- */
-void ClientQueue::displayClients()
-{
-    std::queue<Client> temp = clients;
-    while (!temp.empty())
-    {
-        std::cout << temp.front().getName() << std::endl;
-        temp.pop();
-    };
-};
 
 /**
  * @brief Get the next client in the queue
@@ -61,7 +41,16 @@ Client ClientQueue::getNextClient()
  * @brief Check if the queue is empty
  * @return bool
  */
-bool ClientQueue::isEmpty()
+bool ClientQueue::isEmpty() const
 {
     return clients.empty();
 };
+
+/**
+ * @brief Get the size of the queue
+ * @return int
+ */
+int ClientQueue::getSize() const
+{
+    return clients.size();
+}

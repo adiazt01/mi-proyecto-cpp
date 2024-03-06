@@ -9,7 +9,7 @@
 #include <random>
 #include <chrono>
 
-void processClient(ClientQueue &clientQueue, Database &db, std::default_random_engine &generator, std::uniform_int_distribution<int> &productDistribution, std::uniform_int_distribution<int> &timeDistribution, int numProducts);
+void processClient(Database &db, std::default_random_engine &generator, std::uniform_int_distribution<int> &productDistribution, std::uniform_int_distribution<int> &timeDistribution, int numProducts);
 
 void simulateShop();
 

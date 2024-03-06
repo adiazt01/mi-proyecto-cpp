@@ -7,11 +7,12 @@
 #include "productList.hpp"
 #include "bill.hpp"
 #include "billList.hpp"
+#include "clientQueue.hpp"
+#include "client.hpp"
 
 class Database
 {
 public:
-
     static Database &getInstance()
     {
         static Database instance;
@@ -34,9 +35,16 @@ public:
     void addBill(const Bill &bill);
     BillList getBills();
 
-private:
-    Database(){}
+    // Client methods
+    void addClient(const Client &client) { clientQueue.addClient(client); }
+    Client getNextClient() { return clientQueue.getNextClient(); }
+    bool hasClients() const { return !clientQueue.isEmpty(); }
+    int getNumClientsPresented() const { return clientQueue.getSize(); }
 
+private:
+    Database() {}
+
+    ClientQueue clientQueue;
     BillList bills;
     ProductList products;
 };

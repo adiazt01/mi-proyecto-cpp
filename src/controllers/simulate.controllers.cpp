@@ -10,11 +10,11 @@
 #include "globals.hpp"
 #include "bill.hpp"
 
-void processClient(ClientQueue &clientQueue, Database &db, std::default_random_engine &generator, std::uniform_int_distribution<int> &productDistribution, std::uniform_int_distribution<int> &timeDistribution, int numProducts)
+void processClient(Database &db, std::default_random_engine &generator, std::uniform_int_distribution<int> &productDistribution, std::uniform_int_distribution<int> &timeDistribution, int numProducts)
 {
-    if (!clientQueue.isEmpty())
+    if (db.hasClients())
     {
-        Client client = clientQueue.getNextClient();
+        Client client = db.getNextClient();
 
         auto start = std::chrono::high_resolution_clock::now();
         double maxTime = 10 * 60;
@@ -36,7 +36,7 @@ void processClient(ClientQueue &clientQueue, Database &db, std::default_random_e
             if (elapsed.count() > 10 * 60)
             {
                 std::cout << "El cliente " << client.getName() << " ha excedido el tiempo máximo y será enviado al final de la cola." << std::endl;
-                clientQueue.addClient(client);
+                db.addClient(client);
                 break;
             }
 
@@ -106,9 +106,9 @@ void simulateShop()
 
         Client client(name, lastName, 0, phoneNumber);
 
-        clientQueue.addClient(client);
+        db.addClient(client);
 
-        processClient(clientQueue, db, generator, productDistribution, timeDistribution, numProducts);
+        processClient(db, generator, productDistribution, timeDistribution, numProducts);
         clientCount++;
 
         if (!continueSimulation)
