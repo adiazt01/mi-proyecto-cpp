@@ -14,6 +14,8 @@ public:
 
     Bill getBill(int id);
 
+    Product getMostSoldProduct();
+
     std::vector<Bill> getAllBills();
 
 private:

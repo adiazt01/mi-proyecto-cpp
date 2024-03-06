@@ -81,9 +81,6 @@ void ProductList::reduceStock(int id, int quantity)
 {
     for (int i = 0; i < products.size(); i++)
     {
-        std::cout << "Product ID: " << products[i].getId() << "\n";
-        std::cout << id << "\n";
-
         if (products[i].getId() == id)
         {
             if (products[i].getStock() >= quantity)

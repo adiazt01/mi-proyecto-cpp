@@ -1,6 +1,9 @@
 #include <iostream>
 #include <bill.hpp>
 #include <billList.hpp>
+#include <product.hpp>
+#include <productList.hpp>
+#include <map>
 
 /**
  * @brief Add a bill to the list

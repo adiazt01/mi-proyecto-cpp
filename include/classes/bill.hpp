@@ -30,6 +30,7 @@ public:
     void setLastname(std::string lastname);
     void setNumberPhone(long long int numberPhone);
     void setId(int id);
+    std::vector<Product> getProducts();
 
 private:
     int id;

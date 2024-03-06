@@ -32,8 +32,7 @@ public:
     std::vector<Product> getProducts();
 
 private:
-    
-    std::vector<Product> products;
+        std::vector<Product> products;
     int nextId;
 };
 

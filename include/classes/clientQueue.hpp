@@ -12,6 +12,8 @@ public:
 
     void addClient(Client client);
 
+    void removeClient();
+
     Client getNextClient();
 
     bool isEmpty() const;

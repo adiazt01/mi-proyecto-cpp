@@ -3,6 +3,7 @@
 #include <database.hpp>
 #include <bill.hpp>
 #include <billList.hpp>
+#include <map>
 
 /// @brief Adds a product to the database
 /// @param product
@@ -52,6 +53,7 @@ ProductList Database::getProducts()
 void Database::addBill(const Bill &bill)
 {
     bills.addBill(bill);
+    numClientsCompletedPurchase++;
 }
 
 /// @brief Gets all the bills from the database
@@ -59,4 +61,31 @@ void Database::addBill(const Bill &bill)
 BillList Database::getBills()
 {
     return bills;
+}
+
+/// @brief Gets the most sold product from the database
+/// @return Product
+std::pair<Product, int> Database::getMostSoldProduct()
+{
+    std::map<int, int> soldProducts;
+    for (auto bill : bills.getAllBills())
+    {
+        for (auto product : bill.getProducts())
+        {
+            soldProducts[product.getId()]++;
+        }
+    }
+
+    int max = 0;
+    int maxId = 0;
+    for (auto product : soldProducts)
+    {
+        if (product.second > max)
+        {
+            max = product.second;
+            maxId = product.first;
+        }
+    }
+
+    return {getProduct(maxId), max};
 }

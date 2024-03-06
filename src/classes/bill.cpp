@@ -42,3 +42,8 @@ void Bill::setId(int id)
 {
     this->id = id;
 }
+
+std::vector<Product> Bill::getProducts()
+{
+    return products;
+}

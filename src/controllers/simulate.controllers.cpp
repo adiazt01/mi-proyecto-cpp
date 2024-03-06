@@ -48,14 +48,20 @@ void processClient(Database &db, std::default_random_engine &generator, std::uni
 
         Bill bill = Bill(client.getName(), client.getLastname(), client.getPhonenumber(), client.shoppingcart.getProducts(), client.shoppingcart.getTotalPrice());
 
+        db.addBill(bill);
+
+        std::pair<Product, int> mostSold = db.getMostSoldProduct();
+        Product mostSoldProduct = mostSold.first;
+        int totalSold = mostSold.second;
+        std::cout << "El producto más vendido es " << mostSoldProduct.getName()
+                  << " con " << totalSold << " unidades vendidas." << std::endl;
+
         std::cout << "El cliente " << client.getName() << " " << client.getLastname() << " ha pagado un total de " << client.shoppingcart.getTotalPrice() << " por sus productos." << std::endl;
 
         for (auto product : client.shoppingcart.getProducts())
         {
             std::cout << "El cliente " << client.getName() << " " << client.getLastname() << " ha comprado " << product.getName() << " a " << product.getPrice() << " c/u." << std::endl;
         }
-
-        db.addBill(bill);
 
         std::string input;
         std::cout << "¿Desea continuar con la simulación? (s/n): ";
@@ -72,7 +78,7 @@ void simulateShop()
     Database &db = Database::getInstance();
     ClientQueue clientQueue;
 
-    for (int i = 0; i < 5; ++i)
+    for (int i = 0; i < 3; ++i)
     {
         Product product(
             "Product " + std::to_string(i + 1),
@@ -90,7 +96,7 @@ void simulateShop()
     std::uniform_int_distribution<int> nameDistribution(0, names.size() - 1);
     std::uniform_int_distribution<int> phoneDistribution(1000000, 9999999);
     std::uniform_int_distribution<int> timeDistribution(15, 30);
-    std::uniform_int_distribution<int> numProductsDistribution(1, 30);
+    std::uniform_int_distribution<int> numProductsDistribution(5, 5);
     std::uniform_int_distribution<int> productDistribution(1, db.getProducts().size());
 
     int maxClients = 100;

@@ -27,6 +27,7 @@ public:
     void removeProduct(int id);
     void updateProduct(int id, const Product &product);
     void reduceStock(int id, int quantity);
+    std::pair<Product, int> getMostSoldProduct();
 
     Product getProduct(int id);
     ProductList getProducts();
@@ -36,14 +37,20 @@ public:
     BillList getBills();
 
     // Client methods
-    void addClient(const Client &client) { clientQueue.addClient(client); }
+    void addClient(const Client &client)
+    {
+        totalClientsPresented++;
+        clientQueue.addClient(client);
+    }
     Client getNextClient() { return clientQueue.getNextClient(); }
     bool hasClients() const { return !clientQueue.isEmpty(); }
-    int getNumClientsPresented() const { return clientQueue.getSize(); }
+    int getNumClientsPresented() const { return numClientsCompletedPurchase; }
 
 private:
     Database() {}
 
+    int totalClientsPresented = 0;
+    int numClientsCompletedPurchase = 0;
     ClientQueue clientQueue;
     BillList bills;
     ProductList products;
