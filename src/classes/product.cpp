@@ -1,5 +1,9 @@
 #include <product.hpp>
 
+Product::Product()
+{
+}
+
 /**
  * @brief Constructs a new Product object.
  * 

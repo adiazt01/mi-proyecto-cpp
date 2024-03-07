@@ -10,4 +10,9 @@ void removeProduct();
 void displayProducts();
 void updateProduct();
 
+void showTotalClientsPresented();
+void showNumClientsCompletedPurchase();
+void showMostSoldProduct();
+void showSales();
+
 #endif // ADMIN_CONTROLLERS_H

@@ -32,6 +32,12 @@ public:
     void setId(int id);
     std::vector<Product> getProducts();
 
+    std::string getInfo();
+
+    double getTotal(){
+        return total;
+    }
+
 private:
     int id;
     std::string name;

@@ -67,12 +67,20 @@ BillList Database::getBills()
 /// @return Product
 std::pair<Product, int> Database::getMostSoldProduct()
 {
+
+    if (bills.getAllBills().empty())
+    {
+        return {Product(), 0};
+    }
+
     std::map<int, int> soldProducts;
+    int totalSold = 0;
     for (auto bill : bills.getAllBills())
     {
         for (auto product : bill.getProducts())
         {
             soldProducts[product.getId()]++;
+            totalSold++;
         }
     }
 
@@ -87,5 +95,5 @@ std::pair<Product, int> Database::getMostSoldProduct()
         }
     }
 
-    return {getProduct(maxId), max};
+    return {getProduct(maxId), totalSold};
 }

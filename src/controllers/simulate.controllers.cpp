@@ -23,10 +23,18 @@ void processClient(Database &db, std::default_random_engine &generator, std::uni
         {
             int productId = productDistribution(generator);
             Product product = db.getProduct(productId);
-            client.shoppingcart.addProduct(product);
-            db.reduceStock(product.getId(), 1);
 
-            std::cout << "+ " << product.getName() << " $" << product.getPrice() << std::endl;
+            if (db.getProduct(productId).getStock() > 0)
+            {
+                client.shoppingcart.addProduct(product);
+                db.reduceStock(product.getId(), 1);
+
+                std::cout << "+ " << product.getName() << " $" << product.getPrice() << std::endl;
+            }
+            else
+            {
+                std::cout << "x " << product.getName() << " se ha agotado." << std::endl;
+            }
 
             int time = timeDistribution(generator);
             std::this_thread::sleep_for(std::chrono::seconds(time));
@@ -47,15 +55,16 @@ void processClient(Database &db, std::default_random_engine &generator, std::uni
 
         db.addBill(bill);
 
-        /*
-            std::pair<Product, int> mostSold = db.getMostSoldProduct();
-            Product mostSoldProduct = mostSold.first;
-            int totalSold = mostSold.second;
-            std::cout << "El producto más vendido es " << mostSoldProduct.getName()
-            << " con " << totalSold << " unidades vendidas." << std::endl;
-        */
-
-        std::cout << "El cliente " << client.getName() << " " << client.getLastname() << " ha pagado un total de $" << client.shoppingcart.getTotalPrice() << " por sus productos." << std::endl;
+        std::cout << "\n------------------ Factura ------------------\n";
+        std::cout << "Cliente: " << client.getName() << " " << client.getLastname() << "\n";
+        std::cout << "Número de teléfono: " << client.getPhonenumber() << "\n";
+        std::cout << "Productos:\n";
+        for (const auto &product : client.shoppingcart.getProducts())
+        {
+            std::cout << "- " << product.getName() << ": $" << product.getPrice() << "\n";
+        }
+        std::cout << "Total: $" << client.shoppingcart.getTotalPrice() << "\n";
+        std::cout << "---------------------------------------------\n\n";
 
         std::string input;
         std::cout << "¿Desea continuar con la simulación? (s/n): ";
@@ -93,7 +102,7 @@ void simulateShop()
     std::uniform_int_distribution<int> nameDistribution(0, names.size() - 1);
     std::uniform_int_distribution<int> phoneDistribution(1000000, 9999999);
     std::uniform_int_distribution<int> timeDistribution(15, 30);
-    std::uniform_int_distribution<int> numProductsDistribution(5, 5);
+    std::uniform_int_distribution<int> numProductsDistribution(1, 30);
     std::uniform_int_distribution<int> productDistribution(1, db.getProducts().size());
 
     int maxClients = 100;
@@ -114,11 +123,13 @@ void simulateShop()
 
         Client client(name, lastName, 0, phoneNumber);
 
-        std::cout << "Añadiendo a " << client.getName() << " a la cola 🐧" << std::endl << std::endl;
+        std::cout << "Añadiendo a " << client.getName() << " a la cola 🐧" << std::endl
+                  << std::endl;
         db.addClient(client);
 
         processClient(db, generator, productDistribution, timeDistribution, numProducts);
         clientCount++;
+
 
         if (!continueSimulation)
         {

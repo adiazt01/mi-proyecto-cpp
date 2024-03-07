@@ -44,7 +44,10 @@ public:
     }
     Client getNextClient() { return clientQueue.getNextClient(); }
     bool hasClients() const { return !clientQueue.isEmpty(); }
+
+    // Stats methods
     int getNumClientsPresented() const { return numClientsCompletedPurchase; }
+    int getNumClientsCompletedPurchase() const { return totalClientsPresented; }
 
 private:
     Database() {}

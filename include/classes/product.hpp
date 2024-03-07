@@ -13,6 +13,11 @@ class Product
 public:
     /**
      * @brief Construct a new Product object
+     */
+    Product();
+
+    /**
+     * @brief Construct a new Product object
      * @param name
      * @param description
      * @param price

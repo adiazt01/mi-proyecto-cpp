@@ -47,3 +47,19 @@ std::vector<Product> Bill::getProducts()
 {
     return products;
 }
+
+std::string Bill::getInfo()
+{
+    std::string info = "Nombre: " + name + " " + lastname + "\n";
+    info += "Telefono: " + std::to_string(numberPhone) + "\n";
+    info += "Productos: \n";
+
+    for (auto product : products)
+    {
+        info += product.getName() + " $" + std::to_string(product.getPrice()) + "\n";
+    }
+
+    info += "Total: $" + std::to_string(total) + "\n";
+
+    return info;
+}

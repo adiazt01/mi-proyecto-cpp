@@ -14,7 +14,15 @@ public:
 
     Bill getBill(int id);
 
-    Product getMostSoldProduct();
+    Bill& operator[](int index) {
+        return bills[index];
+    }
+
+     size_t size() const {
+        return bills.size();
+    }
+
+    
 
     std::vector<Bill> getAllBills();
 
