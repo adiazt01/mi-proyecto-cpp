@@ -55,13 +55,12 @@ void removeProduct()
         std::cin.clear();
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
-        // Pregunta al usuario si desea continuar
         std::cout << "¿Deseas continuar? (s/n): ";
         char answer;
         std::cin >> answer;
         if (answer == 'n' || answer == 'N')
         {
-            return; // Salir de la función
+            return;
         }
     }
 
